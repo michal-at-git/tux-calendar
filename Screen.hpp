@@ -18,6 +18,10 @@ public:
     int x, y;
     getmaxyx(stdscr, y,x);
     
+    int x_mid, y_mid;
+    x_mid = x-14; y_mid = y-4;
+    
+    
     attron(A_REVERSE);
       printw("Tux Calendar");
       
@@ -28,9 +32,9 @@ public:
 
     attroff(A_REVERSE);
     refresh();
-    move(y/2,x/2); 
+    move(y_mid/2,x_mid/2); 
     printw("%s %i\n", monthName.c_str(),year);
-    move(((y/2)+1),x/2); 
+    move(((y_mid/2)+1),x_mid/2); 
     refresh();
     attron(A_REVERSE);
     printw("  M   T   W   T   F   S   S \n");
@@ -39,7 +43,7 @@ public:
     
     //int limit = monthLength+dayOfWeek;
     
-    move((y/2+2),(x/2));
+    move((y_mid/2+2),(x_mid/2));
 
     refresh();
     for(int i=1, d=1; d<=monthLength; i++){
@@ -55,7 +59,7 @@ public:
 	      attron(COLOR_PAIR(1));
 	      printw("  %i \n",d);
 	      attroff(COLOR_PAIR(1));
-	      move((y/2+(i/7)+2),x/2);
+	      move((y_mid/2+(i/7)+2),x_mid/2);
 	    refresh();}
 	    else {
 	    printw("  %i ",d);
@@ -66,7 +70,7 @@ public:
 	      attron(COLOR_PAIR(1));
 	      printw(" %i \n",d);
 	      attroff(COLOR_PAIR(1));
-	      move((y/2+(i/7)+2),x/2);
+	      move((y_mid/2+(i/7)+2),x_mid/2);
 
 	    refresh();}
 	    else {
